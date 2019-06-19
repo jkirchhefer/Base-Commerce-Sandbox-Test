@@ -8,7 +8,8 @@ import java.util.List;
 public class JavaSender {
     public static void main(String[] args) throws Exception {
         //creates file object for storing transaction IDs
-        File f = new File("/home/justin/Documents/sandbox-test/transactions.txt");
+        //paths should be String
+        File f = new File($path_to_transactions.txt);
         
         //tests existence of transactions file, creates/initializes file if DNE
         if (f.createNewFile()) { 
@@ -139,7 +140,8 @@ public class JavaSender {
         transaction12.setCardExpirationYear("2022");
         
         //authenticates client
-        BaseCommerceClient client = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+        //credentials should be String
+        BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
         client.setSandbox(true);
         
         //creates/initializes list of transactions
