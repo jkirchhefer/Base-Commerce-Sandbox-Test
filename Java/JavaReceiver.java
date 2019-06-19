@@ -54,8 +54,7 @@ public class JavaReceiver {
             statusWriter.write(name + "," + array[1] + "," + amount + "," + status + "\n");
             statusWriter.close();
         }
-        //prevents duplicates
+        //closes file stream
         s.close();
-        //transactions.delete();
     }
 }
