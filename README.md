@@ -7,3 +7,14 @@ data and processes the transactions and stores the IDs. The receiver program fun
 ## Getting Started
 Make sure to put in your keys and file paths.  
 Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.
+
+## Descriptions
+#### Writer Programs
+This program helps you design the specific test cases you would like to process. Simply set the parameters for each transaction and add it to the list. When you run the program, it will convert the transaction to JSON and write it to the transactions.json file. 
+
+#### Reader Programs
+This program reads transactions from the transactions.json file, processes them, and writes each transaction type and ID to the transactions.txt file.
+
+#### Receiver Programs
+This program reads the transaction types and IDs from the transactions.txt file, retrives the status of each transaction, and writes the
+Name, ID, amount, and status.
