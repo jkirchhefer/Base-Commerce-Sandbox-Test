@@ -49,7 +49,7 @@ def main():
         "amount": 2.44,
     }
 
-    # random
+    # should fail
     bat2 = {
         "form": "BAT",
         "type": "DEBIT",
@@ -197,6 +197,9 @@ def main():
         "year": "2037",
         "amount": 4.85,
     }
+    
+    # path for the transactions json file
+    transactions_json = $path_to_transactions.json
 
     # creates a list of transactions to be stored
     transactions = []
@@ -219,7 +222,7 @@ def main():
     transactions.append(json.dumps(bct12))
 
     # iterates through transactions, writing them to a file
-    with open("/home/justin/Documents/sandbox-test/transactions.json", "a") as f:
+    with open(transacions_json, "a") as f:
         for transaction in transactions:
             f.write(transaction + "\n")
 
