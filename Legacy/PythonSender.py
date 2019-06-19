@@ -4,10 +4,11 @@ import os
 
 def main():
     # creates/initializes the transactions file
-    file = "/home/justin/Documents/sandbox-test/transactions.txt"
+    # path should be String
+    file = $path_to_transactions.txt
     if not os.path.isfile(file):
         with open(file, "a+") as f:
-            f.write("TransactionID \n")
+            f.write("Format: Type,TransactionID \n")
 
     # creates/initializes the transaction
     # should pass
@@ -130,8 +131,9 @@ def main():
     transaction12.amount = 4.85
 
     # authenticates the client and processes the transaction
-    o_client = BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g",
-                                  "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540", True)
+    # credentials should be String
+    o_client = BaseCommerceClient($username, $password,
+                                  $key, True)
     transaction1 = o_client.process_bank_card_transaction(transaction1)
     transaction2 = o_client.process_bank_card_transaction(transaction2)
     transaction3 = o_client.process_bank_card_transaction(transaction3)
@@ -169,7 +171,7 @@ def main():
 
     # writes the transaction IDs to the transactions file
     # make it process the transaction in the loop
-    with open("/home/justin/Documents/sandbox-test/transactions.txt", "a+") as f:
+    with open(file, "a+") as f:
         for transaction in transactions:
             if str(type(transaction)) == "<class 'basecommerce.bank_card_transaction.BankCardTransaction'>":
                 f.write("BCT," + str(transaction.id) + "\n")
