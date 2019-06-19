@@ -145,25 +145,25 @@ $transaction12 = $o_bcpc->processBankCardTransaction( $transaction12 );
 
 
 //creates array of transaction IDs
-$transactionsjson = array();
-array_push($transactionsjson, $transaction1->getTransactionID());
-array_push($transactionsjson, $transaction2->getTransactionID());
-array_push($transactionsjson, $transaction3->getTransactionID());
-array_push($transactionsjson, $transaction4->getTransactionID());
-array_push($transactionsjson, $transaction5->getTransactionID());
-array_push($transactionsjson, $transaction6->getTransactionID());
-array_push($transactionsjson, $transaction7->getTransactionID());
-array_push($transactionsjson, $transaction8->getTransactionID());
-array_push($transactionsjson, $transaction9->getTransactionID());
-array_push($transactionsjson, $transaction10->getTransactionID());
-array_push($transactionsjson, $transaction11->getTransactionID());
-array_push($transactionsjson, $transaction12->getTransactionID());
-$lentransactions = count($transactionsjson);
+$transactions = array();
+array_push($transactions, $transaction1->getTransactionID());
+array_push($transactions, $transaction2->getTransactionID());
+array_push($transactions, $transaction3->getTransactionID());
+array_push($transactions, $transaction4->getTransactionID());
+array_push($transactions, $transaction5->getTransactionID());
+array_push($transactions, $transaction6->getTransactionID());
+array_push($transactions, $transaction7->getTransactionID());
+array_push($transactions, $transaction8->getTransactionID());
+array_push($transactions, $transaction9->getTransactionID());
+array_push($transactions, $transaction10->getTransactionID());
+array_push($transactions, $transaction11->getTransactionID());
+array_push($transactions, $transaction12->getTransactionID());
+$lentransactions = count($transactions);
 
 $file = fopen($path, "a");
 
 for($i=0; $i<$lentransactions; $i++) {
-    fwrite($file, $transactionsjson[$i]);
+    fwrite($file, $transactions[$i]);
     fwrite($file, "\n");
 }
 
