@@ -4,10 +4,13 @@ import os
 
 def main():
     # path for the statuses file
-    file = "/home/justin/Documents/sandbox-test/statuses.csv"
+    statuses_file = $path_to_statuses.csv
+    
+    # path for the transacitons file
+    transactions_file = $path_to_transactions.txt
 
     # opens the transactions file for reading and stores the transaction IDs in a list
-    with open("/home/justin/Documents/sandbox-test/transactions.txt", "r") as f:
+    with open(transactions_file, "r") as f:
         f.readline()
         ids = f.read()
         ids = ids.split("\n")
@@ -26,11 +29,11 @@ def main():
             f.write("Name,ID,Amount,Status\n")
 
     # authenticates client
-    o_client = BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g",
-                                  "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540", True)
+    o_client = BaseCommerceClient($username, $password,
+                                  $key, True)
 
     # gets the transaction statuses depending on type and id and stores them in the statuses file
-    with open("/home/justin/Documents/sandbox-test/statuses.csv", "a") as f:
+    with open(file, "a") as f:
         for x in ids:
             if x[0] == "BCT":
                 transaction = o_client.get_bank_card_transaction(x[1])
