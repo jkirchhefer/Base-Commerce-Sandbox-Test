@@ -5,6 +5,7 @@ from basecommerce import *
 
 def main():
     # path for the transactions json file
+    # paths should be String
     transactions_json = $path_to_transactions.json
     
     # path for the transactions text file
@@ -28,6 +29,7 @@ def main():
             f.write("Format: Type,TransactionID\n")
 
     # authenticates client
+    # credentials should be String
     o_client = BaseCommerceClient($username, $password,
                                   $key, True)
 
