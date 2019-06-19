@@ -4,6 +4,7 @@ import os
 
 def main():
     # path for the statuses file
+    # paths should be String
     statuses_file = $path_to_statuses.csv
     
     # path for the transacitons file
@@ -29,6 +30,7 @@ def main():
             f.write("Name,ID,Amount,Status\n")
 
     # authenticates client
+    # credentials should be String
     o_client = BaseCommerceClient($username, $password,
                                   $key, True)
 
