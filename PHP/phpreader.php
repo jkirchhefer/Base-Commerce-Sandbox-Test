@@ -2,35 +2,37 @@
 include "BaseCommerceClient/basecommercephpsdk/index.php";
 
 //checks if transactions file exists, creates if DNE
-if (! file_exists("/home/justin/Documents/sandbox-test/transactions.txt")) {
-    $file = fopen("/home/justin/Documents/sandbox-test/transactions.txt", "w");
+if (! file_exists($transactions_text)) {
+    $file = fopen($transactions_text, "w");
     fwrite($file, "Format: Type,TransactionID\n");
     fclose($file);
 }
 
 //opens transactions file
-$transactionsjson = fopen("/home/justin/Documents/sandbox-test/transactions.json", "r");       
+//paths should be String
+$transactions_json = fopen($path_to_transactions.json, "r");       
 
 //creates array for storing transactions
 $transactions = array();
 
 //populates transactions array
-while(!feof($transactionsjson)) {
-    array_push($transactions, json_decode(fgets($transactionsjson)));
+while(!feof($transactions_json)) {
+    array_push($transactions, json_decode(fgets($transactions_json)));
     $transactions = array_filter($transactions);
 }
 
 //closes transactions file
-fclose($transactionsjson);
+fclose($transactions_son);
 
 //stores length of transactions array
 $lentransactions = count($transactions);
 
 //opens transactions file
-$file = fopen("/home/justin/Documents/sandbox-test/transactions.txt", "a");
+$transactions_text = fopen($path_to_transactions.txt, "a");
 
 //authenticates client
-$o_bcpc = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+//credentials should be String
+$o_bcpc = new BaseCommerceClient($username, $password, $key);
 $o_bcpc->setSandbox( true );
 
 //processes transactions and stores its type and ID
