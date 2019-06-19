@@ -4,7 +4,8 @@
 include "BaseCommerceClient/basecommercephpsdk/index.php";
 
 //path to transactions file
-$path = "/home/justin/Documents/sandbox-test/transactions.txt";
+//path should be String
+$path = $path_to_transactions.txt;
 
 //creates/initializes transactions file if DNE
 if (! file_exists($path)) {
@@ -124,7 +125,8 @@ $transaction12->setAmount(4.89);
 
 
 //authenticates client
-$o_bcpc = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+//credentials should be String
+$o_bcpc = new BaseCommerceClient($username, $key, $password);
 $o_bcpc->setSandbox( true );
 
 //processes transaction
