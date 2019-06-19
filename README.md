@@ -5,7 +5,7 @@ The writer program stores transactions and all their information as JSON data. T
 data and processes the transactions and stores the IDs. The receiver program functions the same as before. The entire suite of programs is now able to read/write/process ACH as well. All the programs are fully implemented and interoperable.
 
 ## Getting Started
-Make sure to put in your credentials and the paths to where you'd like the program to write its files.  
+For each program, be sure to put in your credentials and the paths to where you'd like the program to write its files.  
 Make sure you have all the proper [packages](https://github.com/jkirchhefer/sandbox-test/blob/master/README.md#packages).  
 Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.  
 
