@@ -181,7 +181,7 @@ $bct12->year = "2009";
 $bct12->amount = 4.89;
 
 //creates array of transactions
-$transactionsjson = array();
+$transactions = array();
 array_push($transactionsjson, json_encode($bct1));
 array_push($transactionsjson, json_encode($bct2));
 array_push($transactionsjson, json_encode($bat1));
@@ -199,14 +199,15 @@ array_push($transactionsjson, json_encode($bct9));
 array_push($transactionsjson, json_encode($bct10));
 array_push($transactionsjson, json_encode($bct11));
 array_push($transactionsjson, json_encode($bct12));
-$lentransactions = count($transactionsjson);
+$lentransactions = count($transactions);
 
 //path variable for transactions file
-$file = fopen("/home/justin/Documents/sandbox-test/transactions.json", "a");
+//paths should be String
+$transactions_json = fopen($path_to_transactions.json, "a");
 
 //writes transactions to the file
 for($i=0; $i<$lentransactions; $i++) {
-    fwrite($file, $transactionsjson[$i]);
+    fwrite($file, $transactions[$i]);
     fwrite($file, "\n");
 }
 
