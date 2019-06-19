@@ -1,13 +1,14 @@
 # sandbox-test
 ## Updates
+#### 6/18/19
 All the sender programs are now obsolete. They have been replaced by the writer and reader programs.
 The writer program stores transactions and all their information as JSON data. The reader program reads the JSON
 data and processes the transactions and stores the IDs. The receiver program functions the same as before. The entire suite of programs is now able to read/write/process ACH as well. All the programs are fully implemented and interoperable.
 
 ## Getting Started
-For each program, be sure to put in your credentials and the paths to where you'd like the program to write its files.  
-Make sure you have all the proper [packages](https://github.com/jkirchhefer/sandbox-test/blob/master/README.md#packages).  
-Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.  
+..*For each program, be sure to put in your credentials and the paths to where you'd like the program to write its files.  
+..*Make sure you have all the proper [packages](https://github.com/jkirchhefer/sandbox-test/blob/master/README.md#packages).  
+..*Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.  
 
 #### Packages
 Make sure you have the Base Commere SDK for your respective language in the source folder, which can be downloaded from the developer page of the [sandbox portal](https://my.basecommercesandbox.com/).  
