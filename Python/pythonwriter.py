@@ -199,6 +199,7 @@ def main():
     }
     
     # path for the transactions json file
+    # paths should be String
     transactions_json = $path_to_transactions.json
 
     # creates a list of transactions to be stored
