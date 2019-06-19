@@ -3,8 +3,9 @@
 include "BaseCommerceClient/basecommercephpsdk/index.php";
 
 //path variables for the transactions and statuses files
-$transactionsPath = "/home/justin/Documents/sandbox-test/transactions.txt";
-$statusesPath = "/home/justin/Documents/sandbox-test/statuses.csv";
+//paths should be String
+$transactionsPath = $path_to_transactions.txt;
+$statusesPath = $path_to_statuses.csv;
 
 //creates/initializes statuses file if DNE
 if (! file_exists($statusesPath)) {
@@ -38,7 +39,8 @@ fclose($transactions);
 $lenids = count($ids);
 
 //authenticates client
-$o_bcpc = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+//credentials should be string
+$o_bcpc = new BaseCommerceClient($username, $password, $key);
 $o_bcpc->setSandbox( true );
 
 //gets transaction statuses and stores it in the statuses file
