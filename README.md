@@ -1,7 +1,7 @@
 # sandbox-test
 ## Updates
 All the sender programs are now obsolete. They have been replaced by the writer and reader programs.
-The writer program stores transactions and all their information as json data. The reader program reads the json
+The writer program stores transactions and all their information as JSON data. The reader program reads the JSON
 data and processes the transactions and stores the IDs. The receiver program functions the same as before. The entire suite of programs is now able to read/write/process ACH as well. All the programs are fully implemented and interoperable.
 
 ## Getting Started
@@ -16,10 +16,13 @@ The Java suite of programs also requires that you have the [org.json package](ht
 ## Descriptions
 #### Writer Programs
 This program helps you design the specific test cases you would like to process. Simply set the parameters for each transaction and add it to the list. When you run the program, it will convert the transaction to JSON and write it to the transactions.json file. 
+Format: JSON
 
 #### Reader Programs
 This program reads transactions from the transactions.json file, processes them, and writes each transaction type and ID to the transactions.txt file.
+Format: Type,ID
 
 #### Receiver Programs
 This program reads the transaction types and IDs from the transactions.txt file, retrives the status of each transaction, and writes the
 Name, ID, amount, and status.
+Format: Name,ID,Amount,Status
