@@ -11,8 +11,8 @@ data and processes the transactions and stores the IDs. The receiver program fun
 * Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.  
 
 #### Packages
-Make sure you have the Base Commere SDK for your respective language in the source folder, which can be downloaded from the developer page of the [sandbox portal](https://my.basecommercesandbox.com/).  
-The Java suite of programs also requires that you have the [org.json package](https://github.com/stleary/JSON-java).
+  * Make sure you have the Base Commere SDK for your respective language in the source folder, which can be downloaded from the developer page of the [sandbox portal](https://my.basecommercesandbox.com/).  
+  * The Java suite of programs also requires that you have the [org.json package](https://github.com/stleary/JSON-java).
 
 ## Descriptions
 #### Writer Programs
