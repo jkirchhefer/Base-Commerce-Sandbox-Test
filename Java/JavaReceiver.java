@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class JavaReceiver {
     public static void main(String[] args) throws Exception{
         //creates file object for reading transaction types and IDs
-        File transactions = new File("/home/justin/Documents/sandbox-test/transactions.txt");
+        File transactions = new File($path_to_transactions.txt);
         Scanner s = new Scanner(transactions);
         
         //creates file object for storing transaction information
-        File statuses = new File("/home/justin/Documents/sandbox-test/statuses.csv");
+        File statuses = new File($path_to_statuses.csv);
         
         //checks existence of a file for storing transaction information, creates/initializes if DNE 
         if (statuses.createNewFile()) { 
@@ -21,7 +21,7 @@ public class JavaReceiver {
         }
         
         //authenticates client
-        BaseCommerceClient o_client = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+        BaseCommerceClient o_client = new BaseCommerceClient($username, $password, $key);
         o_client.setSandbox(true);
         
         //iterates over header info
