@@ -6,7 +6,7 @@ data and processes the transactions and stores the IDs. The receiver program fun
 
 ## Getting Started
 Make sure to put in your credentials and the paths to where you'd like the program to write its files.  
-Make sure you have all the proper packages.  
+Make sure you have all the proper [packages](https://github.com/jkirchhefer/sandbox-test/blob/master/README.md#packages).  
 Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.  
 
 #### Packages
