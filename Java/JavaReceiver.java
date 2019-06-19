@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class JavaReceiver {
     public static void main(String[] args) throws Exception{
         //creates file object for reading transaction types and IDs
+        //path must be a String
         File transactions = new File($path_to_transactions.txt);
         Scanner s = new Scanner(transactions);
         
@@ -21,6 +22,7 @@ public class JavaReceiver {
         }
         
         //authenticates client
+        //credentials should be passed as String
         BaseCommerceClient o_client = new BaseCommerceClient($username, $password, $key);
         o_client.setSandbox(true);
         
