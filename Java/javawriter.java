@@ -210,7 +210,8 @@ public class javawriter {
         transactions.add(bct12);
         
         //creates file object for the storage file
-        File f = new File("/home/justin/Documents/sandbox-test/transactions.json");
+        //path must be a String
+        File f = new File($path_to_transactions.json);
         
         //iteratest through the list of transactions, writing each one to the file
         for(JSONObject transaction: transactions) {
