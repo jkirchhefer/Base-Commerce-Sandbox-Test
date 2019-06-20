@@ -58,6 +58,6 @@ public class JavaReceiver {
         s.close();
         
         //prints session ID for later reference
-        System.out.println( "Session ID: " + s_session_id );
+        System.out.println("Session ID: " + o_client.getLastSessionID());
     }
 }
