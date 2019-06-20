@@ -177,6 +177,9 @@ def main():
                 f.write("BCT," + str(transaction.id) + "\n")
             elif str(type(transaction)) == "<class 'basecommerce.bank_account_transaction.BankAccountTransaction'>":
                 f.write("BAT," + str(transaction.id) + "\n")
+                
+    # prints session ID for later reference
+    print("Session ID: " + o_client.session_id)
 
 
 if __name__ == "__main__":
