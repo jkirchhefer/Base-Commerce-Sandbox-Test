@@ -56,5 +56,8 @@ public class JavaReceiver {
         }
         //closes file stream
         s.close();
+        
+        //prints session ID for later reference
+        System.out.println( "Session ID: " + s_session_id );
     }
 }
