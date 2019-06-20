@@ -66,8 +66,12 @@ public class javareader {
                 transaction = o_client.processBankAccountTransaction(transaction);
                 f.write("BAT," + transaction.getBankAccountTransactionId() + "\n");        
             }
-        }   
+        }
+        //closes open file streams
         f.close();
-        s.close();       
+        s.close();
+        
+        //prints session ID for later reference
+        System.out.println("Session ID: " + o_client.getLastSessionID());
     }
 }
