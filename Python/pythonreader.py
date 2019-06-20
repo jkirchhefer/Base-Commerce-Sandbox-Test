@@ -59,7 +59,8 @@ def main():
                 bat.effective_date = datetime.now()
                 bat = o_client.process_bank_account_transaction(bat)
                 f.write("BAT," + str(bat.id) + "\n")
-                
+    
+    # prints session ID for later reference
     print("Session ID: " + o_client.session_id)
                 
 
