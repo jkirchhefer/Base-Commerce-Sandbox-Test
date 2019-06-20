@@ -46,7 +46,8 @@ def main():
             amount = transaction.amount
             status = transaction.status
             f.write(name + "," + str(x[1]) + "," + str(amount) + "," + status + "\n")
-            
+    
+    # prints session ID for later reference
     print("Session ID: " + o_client.session_id)
 
 
