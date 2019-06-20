@@ -168,3 +168,6 @@ for($i=0; $i<$lentransactions; $i++) {
 }
 
 fclose($file);
+
+//echos session ID for later reference
+echo "Session ID: " + $o_bcpc->getLastSessionId();
