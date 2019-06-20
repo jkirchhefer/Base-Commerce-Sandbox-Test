@@ -166,5 +166,7 @@ public class JavaSender {
             fWriter.write(transaction.getTransactionId() + "\n");
             fWriter.close();
         }
+        //prints session ID for later reference
+        System.out.println("Session ID: " + o_client.getLastSessionID());
     }
 }
