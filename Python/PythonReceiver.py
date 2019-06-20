@@ -46,6 +46,8 @@ def main():
             amount = transaction.amount
             status = transaction.status
             f.write(name + "," + str(x[1]) + "," + str(amount) + "," + status + "\n")
+            
+    print("Session ID: " + o_client.session_id)
 
 
 if __name__ == "__main__":
