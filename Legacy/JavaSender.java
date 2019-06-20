@@ -139,11 +139,6 @@ public class JavaSender {
         transaction12.setCardExpirationMonth("12");
         transaction12.setCardExpirationYear("2022");
         
-        //authenticates client
-        //credentials should be String
-        BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
-        client.setSandbox(true);
-        
         //creates/initializes list of transactions
         List<BankCardTransaction> transactions = new ArrayList();
         transactions.add(transaction1);
@@ -158,6 +153,11 @@ public class JavaSender {
         transactions.add(transaction10);
         transactions.add(transaction11);
         transactions.add(transaction12);
+        
+        //authenticates client
+        //credentials should be String
+        BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
+        client.setSandbox(true);
 
         //executes transaction and records transaction ID
         for(BankCardTransaction transaction: transactions) {
