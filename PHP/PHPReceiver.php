@@ -64,3 +64,6 @@ for($i=0; $i<$lenids; $i++) {
 
 //closes statuses file
 fclose($statuses);
+
+//echos session ID for later reference
+echo "Session ID: " + $o_bcpc->getLastSessionId();
