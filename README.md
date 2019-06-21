@@ -1,6 +1,9 @@
 # Base Commerce Sandbox Test
 This suite of programs is for testing integration with the Base Commerce Sandbox.
 ## Updates
+#### 6/21/19
+Refactored PHP suite to me more understandable and usable
+
 #### 6/18/19
 All the sender programs are now obsolete. They have been replaced by the writer and reader programs.
 The writer program stores transactions and all their information as JSON data. The reader program reads the JSON
