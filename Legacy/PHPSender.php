@@ -160,13 +160,16 @@ array_push($transactions, $transaction11->getTransactionID());
 array_push($transactions, $transaction12->getTransactionID());
 $lentransactions = count($transactions);
 
+//opens file for writing transaction IDs
 $file = fopen($path, "a");
 
+//writes transaction IDs
 for($i=0; $i<$lentransactions; $i++) {
     fwrite($file, $transactions[$i]);
     fwrite($file, "\n");
 }
 
+//closes file stream
 fclose($file);
 
 //echos session ID for later reference
