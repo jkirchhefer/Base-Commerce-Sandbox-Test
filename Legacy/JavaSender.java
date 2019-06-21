@@ -19,7 +19,6 @@ public class JavaSender {
         }
         
         //creates/initializes transactions
-        //transaction1
         //should pass
         BankCardTransaction transaction1 = new BankCardTransaction();
         transaction1.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -29,7 +28,6 @@ public class JavaSender {
         transaction1.setCardExpirationMonth("03");
         transaction1.setCardExpirationYear("2020");
         
-        //transaction2
         //should fail
         BankCardTransaction transaction2 = new BankCardTransaction();
         transaction2.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -39,7 +37,6 @@ public class JavaSender {
         transaction2.setCardExpirationMonth("03");
         transaction2.setCardExpirationYear("2019");
         
-        //transaction3
         //random
         BankCardTransaction transaction3 = new BankCardTransaction();
         transaction3.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -49,7 +46,6 @@ public class JavaSender {
         transaction3.setCardExpirationMonth("04");
         transaction3.setCardExpirationYear("2020");
         
-        //transaction4
         //random
         BankCardTransaction transaction4 = new BankCardTransaction();
         transaction4.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -59,7 +55,6 @@ public class JavaSender {
         transaction4.setCardExpirationMonth("03");
         transaction4.setCardExpirationYear("2018");
         
-        //transaction5
         //random
         BankCardTransaction transaction5 = new BankCardTransaction();
         transaction5.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -69,7 +64,6 @@ public class JavaSender {
         transaction5.setCardExpirationMonth("06");
         transaction5.setCardExpirationYear("2022");
         
-        //transaction6
         //random
         BankCardTransaction transaction6 = new BankCardTransaction();
         transaction6.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -79,7 +73,6 @@ public class JavaSender {
         transaction6.setCardExpirationMonth("10");
         transaction6.setCardExpirationYear("2019");
        
-        //transaction7
         //random
         BankCardTransaction transaction7 = new BankCardTransaction();
         transaction7.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -89,7 +82,6 @@ public class JavaSender {
         transaction7.setCardExpirationMonth("8");
         transaction7.setCardExpirationYear("2020");
         
-        //transaction8
         //random
         BankCardTransaction transaction8 = new BankCardTransaction();
         transaction8.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -99,7 +91,6 @@ public class JavaSender {
         transaction8.setCardExpirationMonth("19");
         transaction8.setCardExpirationYear("3608");
        
-        //transaction9
         //random
         BankCardTransaction transaction9 = new BankCardTransaction();
         transaction9.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -109,7 +100,6 @@ public class JavaSender {
         transaction9.setCardExpirationMonth("11");
         transaction9.setCardExpirationYear("2021");
         
-        //transaction10
         //random
         BankCardTransaction transaction10 = new BankCardTransaction();
         transaction10.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -119,7 +109,6 @@ public class JavaSender {
         transaction10.setCardExpirationMonth("3");
         transaction10.setCardExpirationYear("2022");
         
-        //transaction11
         //random
         BankCardTransaction transaction11 = new BankCardTransaction();
         transaction11.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -129,7 +118,6 @@ public class JavaSender {
         transaction11.setCardExpirationMonth("twelve");
         transaction11.setCardExpirationYear("2024");
         
-        //transaction12
         //random
         BankCardTransaction transaction12 = new BankCardTransaction();
         transaction12.setType(BankCardTransaction.XS_BCT_TYPE_SALE);
@@ -159,7 +147,7 @@ public class JavaSender {
         BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
         client.setSandbox(true);
 
-        //executes transaction and records transaction ID
+        //processes transaction and records ID
         for(BankCardTransaction transaction: transactions) {
             transaction = client.processBankCardTransaction(transaction);
             FileWriter fWriter = new FileWriter(f, true);
