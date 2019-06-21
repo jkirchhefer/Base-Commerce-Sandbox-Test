@@ -13,11 +13,11 @@ public class javareader {
     public static void main(String[] args) throws Exception{
         //creates file object for the json file that stores the transactions and a scanner for reading it
         //paths must be String
-        File transactions_json = new File("/home/justin/Documents/sandbox-test/transactions.json");
+        File transactions_json = new File($path_to_transactions.json);
         Scanner transactions_json_scanner = new Scanner(transactions_json);
         
         //creates file object for the file that will store the transaction types and IDs
-        File transactions_text = new File("/home/justin/Documents/sandbox-test/transactions.txt");
+        File transactions_text = new File($path_to_transactions.txt);
          
         //creates/initializes file for storing transaction type and IDs, if DNE
         if (transactions_text.createNewFile()) { 
@@ -28,7 +28,7 @@ public class javareader {
         
         //authenticates client
         //make sure credentials are Strings
-        BaseCommerceClient o_client = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+        BaseCommerceClient o_client = new BaseCommerceClient($username, $password, $key);
         o_client.setSandbox(true);
         
         //creates a file writer for storing transaction types and IDs
