@@ -1,16 +1,20 @@
 <?php
 include "BaseCommerceClient/basecommercephpsdk/index.php";
 
+//paths for necessary files
+//paths should be String
+$transactions_text_path = $path_to_transactions.txt;
+$transactions_json_path = $path_to_transactions.json;
+
 //checks if transactions file exists, creates if DNE
-if (! file_exists($transactions_text)) {
-    $file = fopen($transactions_text, "w");
-    fwrite($file, "Format: Type,TransactionID\n");
-    fclose($file);
+if (! file_exists($transactions_text_path)) {
+    $transactions_text = fopen($transactions_text_path, "w");
+    fwrite($transactions_text, "Format: Type,TransactionID\n");
+    fclose($transactions_text);
 }
 
 //opens transactions file
-//paths should be String
-$transactions_json = fopen($path_to_transactions.json, "r");       
+$transactions_json = fopen($transactions_json_path, "r");       
 
 //creates array for storing transactions
 $transactions = array();
@@ -22,52 +26,53 @@ while(!feof($transactions_json)) {
 }
 
 //closes transactions file
-fclose($transactions_son);
+fclose($transactions_json);
 
 //stores length of transactions array
 $lentransactions = count($transactions);
 
 //opens transactions file
-$transactions_text = fopen($path_to_transactions.txt, "a");
+$transactions_text = fopen($transactions_text_path, "a");
 
 //authenticates client
 //credentials should be String
 $o_bcpc = new BaseCommerceClient($username, $password, $key);
-$o_bcpc->setSandbox( true );
+$o_bcpc->setSandbox(true);
 
 //processes transactions and stores its type and ID
-for($i=0; $i<$lentransactions; $i++) {
-    if($transactions[$i]->form === "BCT") {
+foreach ($transactions as $transaction) {
+    if($transaction->form === "BCT") {
         $bct = new BankCardTransaction();
-        $bct->setType($transactions[$i]->type);
-        $bct->setCardName($transactions[$i]->name);
-        $bct->setCardNumber($transactions[$i]->number);
-        $bct->setCardExpirationMonth($transactions[$i]->month);
-        $bct->setCardExpirationYear($transactions[$i]->year);
-        $bct->setAmount($transactions[$i]->amount);
-        $bct = $o_bcpc->processBankCardTransaction( $bct );
-        fwrite($file, "BCT,");
-        fwrite($file, $bct->getTransactionID());
-        fwrite($file, "\n");
-    } elseif($transactions[$i]->form === "BAT") {
+        $bct->setType($transaction->type);
+        $bct->setCardName($transaction->name);
+        $bct->setCardNumber($transaction->number);
+        $bct->setCardExpirationMonth($transaction->month);
+        $bct->setCardExpirationYear($transaction->year);
+        $bct->setAmount($transaction->amount);
+        $bct = $o_bcpc->processBankCardTransaction($bct);
+        fwrite($transactions_text, "BCT,");
+        fwrite($transactions_text, $bct->getTransactionID());
+        fwrite($transactions_text, "\n");
+    } elseif($transaction->form === "BAT") {
         $bat = new BankAccountTransaction();
-        $bat->setType($transactions[$i]->type);
-        $bat->setMethod($transactions[$i]->method);
-        $bat->setRoutingNumber($transactions[$i]->rt_number);
-        $bat->setAccountType($transactions[$i]->acct_type);
-        $bat->setAccountName($transactions[$i]->name);
-        $bat->setAccountNumber($transactions[$i]->acct_number);
-        $bat->setAmount($transactions[$i]->amount);
+        $bat->setType($transaction->type);
+        $bat->setMethod($transaction->method);
+        $bat->setRoutingNumber($transaction->rt_number);
+        $bat->setAccountType($transaction->acct_type);
+        $bat->setAccountName($transaction->name);
+        $bat->setAccountNumber($transaction->acct_number);
+        $bat->setAmount($transaction->amount);
         $bat->setEffectiveDate(date('m-d-Y H:i:s'));
-        $bat = $o_bcpc->processBankAccountTransaction( $bat );
-        fwrite($file, "BAT,");
-        fwrite($file, $bat->getBankAccountTransactionId());
-        fwrite($file, "\n");
+        $bat = $o_bcpc->processBankAccountTransaction($bat);
+        fwrite($transactions_text, "BAT,");
+        fwrite($transactions_text, $bat->getBankAccountTransactionId());
+        fwrite($transactions_text, "\n");
     } 
 }
 
 //closes transactions file
-fclose($file);
+fclose($transactions_text);
 
 //echos session ID for later reference
-echo "Session ID: " + $o_bcpc->getLastSessionId();
+$sessionID = $o_bcpc->getLastSessionId();
+echo "Session ID: $sessionID";
