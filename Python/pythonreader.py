@@ -6,14 +6,14 @@ from basecommerce import *
 def main():
     # path for the transactions json file
     # paths should be String
-    transactions_json = $path_to_transactions.json
-    
+    transactions_json = "/home/justin/Documents/sandbox-test/transactions.json"
+
     # path for the transactions text file
-    transactions_text = $path_to_transactions.txt
-    
+    transactions_text = "/home/justin/Documents/sandbox-test/transactions.txt"
+
     # opens transaction json file and retrieves the transactions, storing them in a list
-    with open(transactions_json, "r") as f:
-        transactions = f.read()
+    with open(transactions_json, "r") as transactions_writer:
+        transactions = transactions_writer.read()
         transactions = transactions.split("\n")
 
     # strips empty entries from the list
@@ -25,16 +25,16 @@ def main():
 
     # creates/initializes file for storing transaction IDs
     if not os.path.isfile(transactions_text):
-        with open(file, "a+") as f:
-            f.write("Format: Type,TransactionID\n")
+        with open(transactions_text, "a+") as transactions_writer:
+            transactions_writer.write("Format: Type,TransactionID\n")
 
     # authenticates client
     # credentials should be String
-    o_client = BaseCommerceClient($username, $password,
-                                  $key, True)
+    client = BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g",
+                                  "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540", True)
 
     # iterates through transactions, processing them and storing transaction types and IDs
-    with open(transactions_text, "a") as f:
+    with open(transactions_text, "a") as transactions_writer:
         for transaction in transactions:
             if transaction["form"] == "BCT":
                 bct = BankCardTransaction()
@@ -44,8 +44,8 @@ def main():
                 bct.expiration_month = transaction["month"]
                 bct.expiration_year = transaction["year"]
                 bct.amount = transaction["amount"]
-                bct = o_client.process_bank_card_transaction(bct)
-                f.write("BCT," + str(bct.id) + "\n")
+                bct = client.process_bank_card_transaction(bct)
+                transactions_writer.write("BCT," + str(bct.id) + "\n")
 
             elif transaction["form"] == "BAT":
                 bat = BankAccountTransaction()
@@ -57,12 +57,12 @@ def main():
                 bat.account_number = transaction["acct_number"]
                 bat.amount = transaction["amount"]
                 bat.effective_date = datetime.now()
-                bat = o_client.process_bank_account_transaction(bat)
-                f.write("BAT," + str(bat.id) + "\n")
-    
+                bat = client.process_bank_account_transaction(bat)
+                transactions_writer.write("BAT," + str(bat.id) + "\n")
+
     # prints session ID for later reference
-    print("Session ID: " + o_client.session_id)
-                
+    print("Session ID: " + client.session_id)
+
 
 if __name__ == "__main__":
     main()
