@@ -15,28 +15,25 @@ if (! file_exists($statusesPath)) {
 }
 
 //opens the transactions and statuses files for reading and writing, respectively
-$transactions = fopen($transactionsPath, "r");
+$transactionsFile = fopen($transactionsPath, "r");
 $statuses = fopen($statusesPath, "a");
 
 //iteratespast the header information
-fgets($transactions);        
+fgets($transactionsFile);        
 
 //creates array for transaction types and ids
-$ids = array();
+$transactions = array();
 
 //populates array of transaction types and ids, filtering empty entries
-while(!feof($transactions)) {
-    $transaction = explode(",", fgets($transactions));
-    $transaction = array_filter($transaction);
-    array_push($ids, $transaction);
-    $ids = array_filter($ids);
+while(!feof($transactionsFile)) {
+    $transactionInfo = explode(",", fgets($transactionsFile));
+    $transactionInfo = array_filter($transactionInfo);
+    array_push($transactions, $transactionInfo);
+    $transactions = array_filter($transactions);
 }
 
 //closes transactions file
-fclose($transactions);
-
-//stores the length of the ids array
-$lenids = count($ids);
+fclose($transactionsFile);
 
 //authenticates client
 //credentials should be string
@@ -44,16 +41,17 @@ $o_bcpc = new BaseCommerceClient($username, $password, $key);
 $o_bcpc->setSandbox( true );
 
 //gets transaction statuses and stores it in the statuses file
-for($i=0; $i<$lenids; $i++) {
-    if($ids[$i][0] === "BCT") {
-        $id = intval($ids[$i][1]);
+foreach ($transactions as $transactionInfo) {
+    $type = $transactionInfo[0];
+    $id = intval($transactionInfo[1]);
+            
+    if($type === "BCT") {
         $transaction = $o_bcpc->getBankCardTransaction($id);
         $name = $transaction->getCardName();
         $amount = $transaction->getAmount();
         $status = $transaction->getStatus();
         fwrite($statuses, "$name,$id,$amount,$status\n");
-    } elseif($ids[$i][0] === "BAT") {
-        $id = intval($ids[$i][1]);
+    } elseif($type === "BAT") {
         $transaction = $o_bcpc->getBankAccountTransaction($id);
         $name = $transaction->getAccountName();
         $amount = $transaction->getAmount();
@@ -66,4 +64,5 @@ for($i=0; $i<$lenids; $i++) {
 fclose($statuses);
 
 //echos session ID for later reference
-echo "Session ID: " + $o_bcpc->getLastSessionId();
+$sessionID = $o_bcpc->getLastSessionId();
+echo "Session ID: $sessionID";
