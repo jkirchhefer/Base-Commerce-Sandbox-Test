@@ -32,26 +32,27 @@ public class JavaReceiver {
         //reads transaction IDs from transactions.txt, stores transaction information in statuses.csv
         while (s.hasNextLine()) {
             String line = s.nextLine();
-            String[] array = line.split(",");
+            String[] transactions = line.split(",");
             String name = "";
             String amount = "";
             String status = "";
+            Integer id = Integer.parseInt(transactions[1]);
             
-            if(array[0].equals("BCT")) {
+            if(transactions[0].equals("BCT")) {
                 BankCardTransaction transaction;
-                transaction = o_client.getBankCardTransaction(Integer.parseInt(array[1]));
+                transaction = o_client.getBankCardTransaction(id);
                 name = transaction.getCardName();
                 amount = Double.toString(transaction.getAmount());
                 status = transaction.getStatus();
-            } else if(array[0].equals("BAT")) {
+            } else if(transactions[0].equals("BAT")) {
                 BankAccountTransaction transaction;
-                transaction = o_client.getBankAccountTransaction(Integer.parseInt(array[1]));
+                transaction = o_client.getBankAccountTransaction(id);
                 name = transaction.getAccountName();
                 amount = Double.toString(transaction.getAmount());
                 status = transaction.getStatus();
             }
             FileWriter statusWriter = new FileWriter(statuses, true);
-            statusWriter.write(name + "," + array[1] + "," + amount + "," + status + "\n");
+            statusWriter.write(name + "," + id + "," + amount + "," + status + "\n");
             statusWriter.close();
         }
         //closes file stream
