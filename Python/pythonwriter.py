@@ -2,6 +2,10 @@ import json
 
 
 def main():
+    # path for the transactions json file
+    # paths should be String
+    transactions_json_path = $path_to_transactions.json
+
     # creates/initializes transactions
     # should pass
     bct1 = {
@@ -49,7 +53,7 @@ def main():
         "amount": 2.44,
     }
 
-    # should fail
+    # random
     bat2 = {
         "form": "BAT",
         "type": "DEBIT",
@@ -197,10 +201,6 @@ def main():
         "year": "2037",
         "amount": 4.85,
     }
-    
-    # path for the transactions json file
-    # paths should be String
-    transactions_json = $path_to_transactions.json
 
     # creates a list of transactions to be stored
     transactions = []
@@ -223,9 +223,9 @@ def main():
     transactions.append(json.dumps(bct12))
 
     # iterates through transactions, writing them to a file
-    with open(transacions_json, "a") as f:
+    with open(transactions_json_path, "a") as transactions_writer:
         for transaction in transactions:
-            f.write(transaction + "\n")
+            transactions_writer.write(transaction + "\n")
 
 
 if __name__ == "__main__":
