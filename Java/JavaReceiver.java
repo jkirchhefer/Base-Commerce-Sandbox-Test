@@ -8,8 +8,8 @@ public class JavaReceiver {
     public static void main(String[] args) throws Exception{
         //creates file object for reading transaction types and IDs
         //path must be a String
-        File transactions = new File($path_to_transactions.txt);
-        Scanner s = new Scanner(transactions);
+        File transactionsFile = new File($path_to_transactions.txt);
+        Scanner s = new Scanner(transactionsFile);
         
         //creates file object for storing transaction information
         File statuses = new File($path_to_statuses.csv);
@@ -32,19 +32,19 @@ public class JavaReceiver {
         //reads transaction IDs from transactions.txt, stores transaction information in statuses.csv
         while (s.hasNextLine()) {
             String line = s.nextLine();
-            String[] transactions = line.split(",");
+            String[] transactionInfo = line.split(",");
             String name = "";
             String amount = "";
             String status = "";
-            Integer id = Integer.parseInt(transactions[1]);
+            Integer id = Integer.parseInt(transactionInfo[1]);
             
-            if(transactions[0].equals("BCT")) {
+            if(transactionInfo[0].equals("BCT")) {
                 BankCardTransaction transaction;
                 transaction = o_client.getBankCardTransaction(id);
                 name = transaction.getCardName();
                 amount = Double.toString(transaction.getAmount());
                 status = transaction.getStatus();
-            } else if(transactions[0].equals("BAT")) {
+            } else if(transactionInfo[0].equals("BAT")) {
                 BankAccountTransaction transaction;
                 transaction = o_client.getBankAccountTransaction(id);
                 name = transaction.getAccountName();
