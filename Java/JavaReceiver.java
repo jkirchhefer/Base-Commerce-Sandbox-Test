@@ -8,45 +8,45 @@ public class JavaReceiver {
     public static void main(String[] args) throws Exception{
         //creates file object for reading transaction types and IDs
         //path must be a String
-        File transactionsFile = new File($path_to_transactions.txt);
-        Scanner s = new Scanner(transactionsFile);
+        File transactions_file = new File("/home/justin/Documents/sandbox-test/transactions.txt");
+        Scanner transactions_file_scanner = new Scanner(transactions_file);
         
         //creates file object for storing transaction information
-        File statuses = new File($path_to_statuses.csv);
+        File statuses = new File("/home/justin/Documents/sandbox-test/statuses.csv");
         
         //checks existence of a file for storing transaction information, creates/initializes if DNE 
         if (statuses.createNewFile()) { 
-            FileWriter statusWriter = new FileWriter(statuses);
-            statusWriter.write("Name,Id,Amount,Status\n");
-            statusWriter.close();
+            FileWriter status_writer = new FileWriter(statuses);
+            status_writer.write("Name,Id,Amount,Status\n");
+            status_writer.close();
         }
         
         //authenticates client
         //credentials should be passed as String
-        BaseCommerceClient o_client = new BaseCommerceClient($username, $password, $key);
-        o_client.setSandbox(true);
+        BaseCommerceClient client = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
+        client.setSandbox(true);
         
         //iterates over header info
-        s.nextLine();
+        transactions_file_scanner.nextLine();
         
         //reads transaction IDs from transactions.txt, stores transaction information in statuses.csv
-        while (s.hasNextLine()) {
-            String line = s.nextLine();
-            String[] transactionInfo = line.split(",");
+        while (transactions_file_scanner.hasNextLine()) {
+            String line = transactions_file_scanner.nextLine();
+            String[] transaction_info = line.split(",");
             String name = "";
             String amount = "";
             String status = "";
-            Integer id = Integer.parseInt(transactionInfo[1]);
+            Integer id = Integer.parseInt(transaction_info[1]);
             
-            if(transactionInfo[0].equals("BCT")) {
+            if(transaction_info[0].equals("BCT")) {
                 BankCardTransaction transaction;
-                transaction = o_client.getBankCardTransaction(id);
+                transaction = client.getBankCardTransaction(id);
                 name = transaction.getCardName();
                 amount = Double.toString(transaction.getAmount());
                 status = transaction.getStatus();
-            } else if(transactionInfo[0].equals("BAT")) {
+            } else if(transaction_info[0].equals("BAT")) {
                 BankAccountTransaction transaction;
-                transaction = o_client.getBankAccountTransaction(id);
+                transaction = client.getBankAccountTransaction(id);
                 name = transaction.getAccountName();
                 amount = Double.toString(transaction.getAmount());
                 status = transaction.getStatus();
@@ -56,9 +56,9 @@ public class JavaReceiver {
             statusWriter.close();
         }
         //closes file stream
-        s.close();
+        transactions_file_scanner.close();
         
         //prints session ID for later reference
-        System.out.println("Session ID: " + o_client.getLastSessionID());
+        System.out.println("Session ID: " + client.getLastSessionID());
     }
 }
