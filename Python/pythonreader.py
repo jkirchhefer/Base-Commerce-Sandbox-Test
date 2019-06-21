@@ -6,26 +6,26 @@ from basecommerce import *
 def main():
     # path for the transactions json file
     # paths should be String
-    transactions_json = $path_to_transactions.json
+    transactions_json_path = $path_to_transactions.json
 
     # path for the transactions text file
-    transactions_text = $path_to_transactions.txt
+    transactions_text_path = $path_to_transactions.txt
 
     # opens transaction json file and retrieves the transactions, storing them in a list
-    with open(transactions_json, "r") as transactions_writer:
-        transactions = transactions_writer.read()
+    with open(transactions_json_path, "r") as transactions_reader:
+        transactions = transactions_reader.read()
         transactions = transactions.split("\n")
 
     # strips empty entries from the list
     transactions = list(filter(None, transactions))
 
     # converts json transactions to python objects
-    for x in range(len(transactions)):
-        transactions[x] = json.loads(transactions[x])
+    for transactions_position in range(len(transactions)):
+        transactions[transactions_position] = json.loads(transactions[transactions_position])
 
     # creates/initializes file for storing transaction IDs
-    if not os.path.isfile(transactions_text):
-        with open(transactions_text, "a+") as transactions_writer:
+    if not os.path.isfile(transactions_text_path):
+        with open(transactions_text_path, "a+") as transactions_writer:
             transactions_writer.write("Format: Type,TransactionID\n")
 
     # authenticates client
@@ -33,7 +33,7 @@ def main():
     client = BaseCommerceClient($username, $password, $key, True)
 
     # iterates through transactions, processing them and storing transaction types and IDs
-    with open(transactions_text, "a") as transactions_writer:
+    with open(transactions_text_path, "a") as transactions_writer:
         for transaction in transactions:
             if transaction["form"] == "BCT":
                 bct = BankCardTransaction()
