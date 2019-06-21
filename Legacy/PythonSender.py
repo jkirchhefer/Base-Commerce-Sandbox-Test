@@ -130,10 +130,12 @@ def main():
     transaction12.expiration_year = "2037"
     transaction12.amount = 4.85
 
-    # authenticates the client and processes the transaction
+    # authenticates the client
     # credentials should be String
     o_client = BaseCommerceClient($username, $password,
                                   $key, True)
+    
+    # processes transactions
     transaction1 = o_client.process_bank_card_transaction(transaction1)
     transaction2 = o_client.process_bank_card_transaction(transaction2)
     transaction3 = o_client.process_bank_card_transaction(transaction3)
@@ -153,10 +155,6 @@ def main():
     # creates/initializes list of transactions
     transactions = []
     transactions.append(transaction1)
-
-    # test adding ACH transaction
-    transactions.append(ACH1)
-
     transactions.append(transaction2)
     transactions.append(transaction3)
     transactions.append(transaction4)
@@ -168,6 +166,9 @@ def main():
     transactions.append(transaction10)
     transactions.append(transaction11)
     transactions.append(transaction12)
+
+    # appends ACH transaction
+    transactions.append(ACH1)
 
     # writes the transaction IDs to the transactions file
     # make it process the transaction in the loop
