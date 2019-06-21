@@ -13,63 +13,63 @@ public class javareader {
     public static void main(String[] args) throws Exception{
         //creates file object for the json file that stores the transactions and a scanner for reading it
         //paths must be String
-        File transactions = new File($path_to_transactions.json);
-        Scanner s = new Scanner(transactions);
+        File transactions_json = new File("/home/justin/Documents/sandbox-test/transactions.json");
+        Scanner transactions_json_scanner = new Scanner(transactions_json);
         
         //creates file object for the file that will store the transaction types and IDs
-        File transactionIDs = new File($path_to_transactions.txt);
+        File transactions_text = new File("/home/justin/Documents/sandbox-test/transactions.txt");
          
         //creates/initializes file for storing transaction type and IDs, if DNE
-        if (transactionIDs.createNewFile()) { 
-            FileWriter f = new FileWriter(transactionIDs);
-            f.write("Format: Type,TransactionID\n");
-            f.close();
+        if (transactions_text.createNewFile()) { 
+            FileWriter transactions_text_writer = new FileWriter(transactions_text);
+            transactions_text_writer.write("Format: Type,TransactionID\n");
+            transactions_text_writer.close();
         }
         
         //authenticates client
         //make sure credentials are Strings
-        BaseCommerceClient o_client = new BaseCommerceClient($username, $password, $key);
+        BaseCommerceClient o_client = new BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g", "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540");
         o_client.setSandbox(true);
         
         //creates a file writer for storing transaction types and IDs
-        FileWriter f = new FileWriter(transactionIDs, true);
+        FileWriter transactions_text_writer = new FileWriter(transactions_text, true);
         
         //iterates through each line of the JSON file
         //processes each transaction
         //stores the transaction type and ID to the new file
-        while (s.hasNextLine()) {
-            String transactionJSON = s.nextLine();
-            JSONObject transactionObj = new JSONObject(transactionJSON);
+        while (transactions_json_scanner.hasNextLine()) {
+            String transaction_json = transactions_json_scanner.nextLine();
+            JSONObject transaction_object = new JSONObject(transaction_json);
             //System.out.println(transactionObj.getString("form"));
-            if(transactionObj.getString("form").equals("BCT")) {
+            if(transaction_object.getString("form").equals("BCT")) {
                 BankCardTransaction transaction = new BankCardTransaction();
                 transaction.setType("SALE");
-                transaction.setAmount(transactionObj.getDouble("amount"));
-                transaction.setCardName(transactionObj.getString("name"));
-                transaction.setCardNumber(transactionObj.getString("number"));
-                transaction.setCardExpirationMonth(transactionObj.getString("month"));
-                transaction.setCardExpirationYear(transactionObj.getString("year"));
+                transaction.setAmount(transaction_object.getDouble("amount"));
+                transaction.setCardName(transaction_object.getString("name"));
+                transaction.setCardNumber(transaction_object.getString("number"));
+                transaction.setCardExpirationMonth(transaction_object.getString("month"));
+                transaction.setCardExpirationYear(transaction_object.getString("year"));
                 transaction = o_client.processBankCardTransaction(transaction);
-                f.write("BCT," + transaction.getTransactionId() + "\n");           
+                transactions_text_writer.write("BCT," + transaction.getTransactionId() + "\n");           
             }
-            else if(transactionObj.getString("form").equals("BAT")) {
+            else if(transaction_object.getString("form").equals("BAT")) {
                 BankAccountTransaction transaction = new BankAccountTransaction();
-                transaction.setType(transactionObj.getString("type"));
-                transaction.setMethod(transactionObj.getString("method"));
-                transaction.setRoutingNumber(transactionObj.getString("rt_number"));
-                transaction.setAmount(transactionObj.getDouble("amount"));
-                transaction.setAccountType(transactionObj.getString("acct_type"));
-                transaction.setAccountName(transactionObj.getString("name"));
-                transaction.setAccountNumber(transactionObj.getString("acct_number"));
+                transaction.setType(transaction_object.getString("type"));
+                transaction.setMethod(transaction_object.getString("method"));
+                transaction.setRoutingNumber(transaction_object.getString("rt_number"));
+                transaction.setAmount(transaction_object.getDouble("amount"));
+                transaction.setAccountType(transaction_object.getString("acct_type"));
+                transaction.setAccountName(transaction_object.getString("name"));
+                transaction.setAccountNumber(transaction_object.getString("acct_number"));
                 Calendar o_calendar = new GregorianCalendar(Locale.US);
                 transaction.setEffectiveDate(o_calendar.getTime());
                 transaction = o_client.processBankAccountTransaction(transaction);
-                f.write("BAT," + transaction.getBankAccountTransactionId() + "\n");        
+                transactions_text_writer.write("BAT," + transaction.getBankAccountTransactionId() + "\n");        
             }
         }
         //closes open file streams
-        f.close();
-        s.close();
+        transactions_text_writer.close();
+        transactions_json_scanner.close();
         
         //prints session ID for later reference
         System.out.println("Session ID: " + o_client.getLastSessionID());
