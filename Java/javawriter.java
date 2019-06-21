@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 public class javawriter {
     public static void main(String[] args) throws Exception{
+        //creates file object for the storage file
+        //path must be a String
+        File transactions_file = new File($path_to_transactions.json);
+        
         //creates/initializes transaction
         //should pass
         JSONObject bct1 = new JSONObject();
@@ -209,15 +213,11 @@ public class javawriter {
         transactions.add(bct11);
         transactions.add(bct12);
         
-        //creates file object for the storage file
-        //path must be a String
-        File f = new File($path_to_transactions.json);
-        
         //iteratest through the list of transactions, writing each one to the file
         for(JSONObject transaction: transactions) {
-            FileWriter fWriter = new FileWriter(f, true);
-            fWriter.write(transaction + "\n");
-            fWriter.close();
+            FileWriter transactions_writer = new FileWriter(transactions_file, true);
+            transactions_writer.write(transaction + "\n");
+            transactions_writer.close();
         }   
     }
 }
