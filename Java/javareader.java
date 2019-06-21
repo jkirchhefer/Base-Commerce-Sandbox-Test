@@ -28,8 +28,8 @@ public class javareader {
         
         //authenticates client
         //make sure credentials are Strings
-        BaseCommerceClient o_client = new BaseCommerceClient($username, $password, $key);
-        o_client.setSandbox(true);
+        BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
+        client.setSandbox(true);
         
         //creates a file writer for storing transaction types and IDs
         FileWriter transactions_text_writer = new FileWriter(transactions_text, true);
@@ -49,7 +49,7 @@ public class javareader {
                 transaction.setCardNumber(transaction_object.getString("number"));
                 transaction.setCardExpirationMonth(transaction_object.getString("month"));
                 transaction.setCardExpirationYear(transaction_object.getString("year"));
-                transaction = o_client.processBankCardTransaction(transaction);
+                transaction = client.processBankCardTransaction(transaction);
                 transactions_text_writer.write("BCT," + transaction.getTransactionId() + "\n");           
             }
             else if(transaction_object.getString("form").equals("BAT")) {
@@ -63,7 +63,7 @@ public class javareader {
                 transaction.setAccountNumber(transaction_object.getString("acct_number"));
                 Calendar o_calendar = new GregorianCalendar(Locale.US);
                 transaction.setEffectiveDate(o_calendar.getTime());
-                transaction = o_client.processBankAccountTransaction(transaction);
+                transaction = client.processBankAccountTransaction(transaction);
                 transactions_text_writer.write("BAT," + transaction.getBankAccountTransactionId() + "\n");        
             }
         }
@@ -72,6 +72,6 @@ public class javareader {
         transactions_json_scanner.close();
         
         //prints session ID for later reference
-        System.out.println("Session ID: " + o_client.getLastSessionID());
+        System.out.println("Session ID: " + client.getLastSessionID());
     }
 }
