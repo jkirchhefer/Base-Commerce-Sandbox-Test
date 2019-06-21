@@ -6,10 +6,10 @@ from basecommerce import *
 def main():
     # path for the transactions json file
     # paths should be String
-    transactions_json = "/home/justin/Documents/sandbox-test/transactions.json"
+    transactions_json = $path_to_transactions.json
 
     # path for the transactions text file
-    transactions_text = "/home/justin/Documents/sandbox-test/transactions.txt"
+    transactions_text = $path_to_transactions.txt
 
     # opens transaction json file and retrieves the transactions, storing them in a list
     with open(transactions_json, "r") as transactions_writer:
@@ -30,8 +30,7 @@ def main():
 
     # authenticates client
     # credentials should be String
-    client = BaseCommerceClient("0014480001", "YjSbhVjTp4zv3Jvw8F6g",
-                                  "C88A85467391577A4A49A832DAF2D3E6D32F6D2092267540", True)
+    client = BaseCommerceClient($username, $password, $key, True)
 
     # iterates through transactions, processing them and storing transaction types and IDs
     with open(transactions_text, "a") as transactions_writer:
