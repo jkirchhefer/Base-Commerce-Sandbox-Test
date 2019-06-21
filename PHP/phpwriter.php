@@ -1,4 +1,8 @@
 <?php
+//path for transactions.json file
+//path should be String
+$transactions_json_path = $path_to_transactions.json;
+
 //creates/initializes transactions
 //should pass
 $bct1 = new stdClass();
@@ -182,34 +186,31 @@ $bct12->amount = 4.89;
 
 //creates array of transactions
 $transactions = array();
-array_push($transactionsjson, json_encode($bct1));
-array_push($transactionsjson, json_encode($bct2));
-array_push($transactionsjson, json_encode($bat1));
-array_push($transactionsjson, json_encode($bat2));
-array_push($transactionsjson, json_encode($bct3));
-array_push($transactionsjson, json_encode($bct4));
-array_push($transactionsjson, json_encode($bct5));
-array_push($transactionsjson, json_encode($bat3));
-array_push($transactionsjson, json_encode($bat4));
-array_push($transactionsjson, json_encode($bct6));
-array_push($transactionsjson, json_encode($bct7));
-array_push($transactionsjson, json_encode($bat5));
-array_push($transactionsjson, json_encode($bct8));
-array_push($transactionsjson, json_encode($bct9));
-array_push($transactionsjson, json_encode($bct10));
-array_push($transactionsjson, json_encode($bct11));
-array_push($transactionsjson, json_encode($bct12));
-$lentransactions = count($transactions);
+array_push($transactions, json_encode($bct1));
+array_push($transactions, json_encode($bct2));
+array_push($transactions, json_encode($bat1));
+array_push($transactions, json_encode($bat2));
+array_push($transactions, json_encode($bct3));
+array_push($transactions, json_encode($bct4));
+array_push($transactions, json_encode($bct5));
+array_push($transactions, json_encode($bat3));
+array_push($transactions, json_encode($bat4));
+array_push($transactions, json_encode($bct6));
+array_push($transactions, json_encode($bct7));
+array_push($transactions, json_encode($bat5));
+array_push($transactions, json_encode($bct8));
+array_push($transactions, json_encode($bct9));
+array_push($transactions, json_encode($bct10));
+array_push($transactions, json_encode($bct11));
+array_push($transactions, json_encode($bct12));
 
-//path variable for transactions file
-//paths should be String
-$transactions_json = fopen($path_to_transactions.json, "a");
+//opens transactions.json file
+$transactions_file = fopen($transactions_json_path, "a");
 
 //writes transactions to the file
-for($i=0; $i<$lentransactions; $i++) {
-    fwrite($file, $transactions[$i]);
-    fwrite($file, "\n");
+foreach ($transactions as $transaction) {
+    fwrite($transactions_file, "$transaction\n");
 }
 
 //closes transactions file
-fclose($file);
+fclose($transactions_file);
