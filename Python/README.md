@@ -31,7 +31,7 @@ E.G.
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
 transactions_text_path = "/home/user/sandbox-test/transactions.txt"
 ```
-* It also requires your credentials to initialize the client. Simply replace `$username`, `$password`, and `$key` with their respecive credentials, which can be found on the Developer page of the Sandbox Portal. The `True` is necessary for testing in the sandbox environment. Your credentials should be passed as String.      
+* It also requires your credentials to initialize the Base Commerce client. Simply replace `$username`, `$password`, and `$key` with their respecive credentials, which can be found on the Developer page of the Sandbox Portal. The `True` is necessary for testing in the sandbox environment. Your credentials should be passed as String.      
 E.G. 
 ```
 client = BaseCommerceClient("your username here", "your password here", "your transaction key here", True)
@@ -45,7 +45,7 @@ E.G.
 statuses_file_path = "/home/user/sandbox-test/statuses.csv"
 transactions_file_path = "/home/user/sandbox-test/transactions.txt"
 ```
-* Second, you must provide your credentials to initialize the client. This is the same as before. Replace `$username`, `$password`, and `$key` with their respective credentials.   
+* Second, you must provide your credentials to initialize the Base Commerce client. This is the same as before. Replace `$username`, `$password`, and `$key` with their respective credentials.   
 E.G.
 ```
 client = BaseCommerceClient("your username here", "your password here", "your transaction key here", True)
