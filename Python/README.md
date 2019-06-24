@@ -25,13 +25,13 @@ transactions.append(json.dumps(bct13))
 and vice versa. If you remove any transactions, remove any references to it elsewhere.
 
 ## pythonreader.py
-* This program has 2 file paths to be specified, just as before: `transactions_json_path` and `transactions_text_path`. `transactions_json_path` should point to where the writer program stored the JSON file with the test transactions and `transactions_text_path` should point to where you want the program to store the file to which it will write transaction IDs.     
+* This program has 2 file paths to be specified, just as before: `transactions_json_path` and `transactions_text_path`. `transactions_json_path` should point to where the writer program stored the JSON file with the test transactions, and `transactions_text_path` should point to where you want the reader program to store the file to which it will write transaction IDs.     
 E.G.
 ```
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
 transactions_text_path = "/home/user/sandbox-test/transactions.txt"
 ```
-* It also requires your credentials to initialize the client. Simply replace `$username`, `$password`, and `$key` with their respecive credentials. The `True` is necessary for testing in the sandbox environment. Your credentials should be passed as String.      
+* It also requires your credentials to initialize the client. Simply replace `$username`, `$password`, and `$key` with their respecive credentials, which can be found on the Developer page of the Sandbox Portal. The `True` is necessary for testing in the sandbox environment. Your credentials should be passed as String.      
 E.G. 
 ```
 client = BaseCommerceClient("your username here", "your password here", "your transaction key here", True)
@@ -39,17 +39,17 @@ client = BaseCommerceClient("your username here", "your password here", "your tr
 * From there, you should be able to run the program. 
 
 ##PythonReceiver.py
-* This last program requires that you specify 2 file paths, `statuses_file_path` and `transactions_file_path`. These should point to where the program will create the file to where it will write transaction statuses and from where it will read transaction IDs, respectively.    
+* This last program requires that you specify 2 file paths, `statuses_file_path` and `transactions_file_path`. These should point to where the program will store the file to which it will write transaction statuses and from where it will read transaction IDs, respectively.    
 E.G.
 ```
 statuses_file_path = "/home/user/sandbox-test/statuses.csv"
 transactions_file_path = "/home/user/sandbox-test/transactions.txt"
 ```
-* Second, you must provide your credentials to initialize the client. This is the same as before. Replace the variables with their respective credentials.   
+* Second, you must provide your credentials to initialize the client. This is the same as before. Replace `$username`, `$password`, and `$key` with their respective credentials.   
 E.G.
 ```
-client = BaseCommerceClient($username, $password, $key, True)
+client = BaseCommerceClient("your username here", "your password here", "your transaction key here", True)
 ```
 * The program should now be able to run.
-* The statuses file will be in csv format for easy human digestion. 
+* The statuses file will be in csv format for easy human digestion. You will be able to find it at the location you previously specified. 
 
