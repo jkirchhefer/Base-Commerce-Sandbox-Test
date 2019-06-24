@@ -1,6 +1,5 @@
 # Getting Started
 ## pythonwriter.py
-This program makes it easy for you to design test cases in a human-digestible format and then stores it as JSON for the reader program to process.
 * The only thing necessary for you to run this program is that you define `transactions_json_path` by replacing `$path_to_transactions.json` with the path to where you'd like the program to write these files. The file path variables must be defined as string. E.G.
 ```
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
