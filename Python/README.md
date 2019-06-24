@@ -11,7 +11,7 @@ E.G. if you add bct13,
 bct13 = {
 "form": "BCT",
         "type": "SALE",
-        "name": "BCT 1",
+        "name": "BCT 13",
         "number": "4111111111111111",
         "month": "10",
         "year": "2020",
@@ -20,7 +20,7 @@ bct13 = {
 ```
 do not forget
 ```
-transactions.append(json.dumps(bct1))
+transactions.append(json.dumps(bct13))
 ```
 and vice versa. If you remove any transactions, remove any references to it elsewhere.
 
