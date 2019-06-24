@@ -12,7 +12,7 @@ data and processes the transactions and stores the IDs. The receiver program fun
 ## Getting Started
 * For each program, be sure to put in your credentials and the paths to where you'd like the program to write its files.  
 * Make sure you have all the proper [packages](https://github.com/jkirchhefer/sandbox-test/blob/master/README.md#packages).  
-* Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd) if you're having any trouble.  
+* Consult the [Base Commerce technical documentation](https://confluence.basecommerce.net/bctd), if you're having any trouble.  
 
 #### Packages
   * Make sure you have the Base Commere SDK for your respective language in the source folder, which can be downloaded from the developer page of the [sandbox portal](https://my.basecommercesandbox.com/).  
