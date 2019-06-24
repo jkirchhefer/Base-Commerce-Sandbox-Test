@@ -29,5 +29,5 @@ Format: Type,ID
 
 #### Receiver Programs
 This program reads the transaction types and IDs from the transactions.txt file, retrives the status of each transaction, and writes the
-Name, ID, amount, and status.
+Name, ID, amount, and status to the statuses.csv file. 
 Format: Name,ID,Amount,Status
