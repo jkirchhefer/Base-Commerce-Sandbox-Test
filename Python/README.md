@@ -5,7 +5,7 @@ E.G.
 ```
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
 ```
-* From there, you can design the transactions to your desire, just be sure to modify `transactions[]` accordingly if you add or remove any transactions.   
+* From there, you can design the transactions to your desire. Just be sure to modify `transactions[]` accordingly, if you add or remove any transactions.   
 E.G. if you add bct13,
 ```
 bct13 = {
