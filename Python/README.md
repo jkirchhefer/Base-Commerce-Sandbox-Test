@@ -31,10 +31,10 @@ E.G.
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
 transactions_text_path = "/home/user/sandbox-test/transactions.txt"
 ```
-* It also requires your credentials to initialize the client. Simply replace each variable with its respecive credential. The `True` is necessary for testing in the sandbox environment.     
+* It also requires your credentials to initialize the client. Simply replace each variable with its respecive credential. The `True` is necessary for testing in the sandbox environment. Your credentials should be passed as String.      
 E.G. 
 ```
-client = BaseCommerceClient($username, $password, $key, True)
+client = BaseCommerceClient("your username here", "your password here", "your transaction key herr", True)
 ```
 * From there, you should be able to run the program. 
 
