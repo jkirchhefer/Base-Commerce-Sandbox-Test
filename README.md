@@ -10,7 +10,7 @@ The entire suite has been refactored. Functionally, everything operates the same
 #### 6/18/19
 All the sender programs are now obsolete. They have been replaced by the writer and reader programs.
 The writer program stores transactions and all their information as JSON data. The reader program reads the JSON
-data and processes the transactions and stores the IDs. The receiver program functions the same as before. The entire suite of programs is now able to read/write/process ACH as well. All the programs are fully implemented and interoperable.
+data, processes the transactions, and stores the IDs. The receiver program functions the same as before. The entire suite of programs is now able to read/write/process ACH as well. All the programs are fully implemented and interoperable.
 
 ## Getting Started
 * For each program, be sure to put in your credentials and the paths to where you'd like the program to write its files.  
