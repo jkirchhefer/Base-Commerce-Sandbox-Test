@@ -2,7 +2,7 @@
 This suite of programs is for testing integration with the Base Commerce Sandbox.
 ## Updates
 #### 6/21/19
-Refactored PHP and Java suites to be more usable and understandable
+Refactored the entire suite to be more usable and understandable
 
 #### 6/18/19
 All the sender programs are now obsolete. They have been replaced by the writer and reader programs.
