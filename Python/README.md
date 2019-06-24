@@ -38,7 +38,7 @@ client = BaseCommerceClient("your username here", "your password here", "your tr
 ```
 * From there, you should be able to run the program. 
 
-##PythonReceiver.py
+## PythonReceiver.py
 * This last program requires that you specify 2 file paths, `statuses_file_path` and `transactions_file_path`. These should point to where the program will store the file to which it will write transaction statuses and from where it will read transaction IDs, respectively.    
 E.G.
 ```
