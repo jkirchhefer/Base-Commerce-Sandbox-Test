@@ -23,14 +23,13 @@ data and processes the transactions and stores the IDs. The receiver program fun
 
 ## Descriptions
 #### Writer Programs
-This program helps you design the specific test cases you would like to process. Simply set the parameters for each transaction and add it to the list. When you run the program, it will convert the transaction to JSON and write it to the transactions.json file. 
+This program helps you design the specific test cases you would like to process. Simply set the parameters for each transaction, and add it to the list. When you run the program, it will convert the transaction to JSON and write it to the transactions.json file. This makes it easier for the user to design test cases and the reader program to later process.
 Format: JSON
 
 #### Reader Programs
-This program reads transactions from the transactions.json file, processes them, and writes each transaction type and ID to the transactions.txt file.
+This program reads transactions from the transactions.json file, processes them, and writes each transaction type and ID to the transactions.txt file. The statuses file will later use this information to retrieve each transaction's status. 
 Format: Type,ID
 
 #### Receiver Programs
-This program reads the transaction types and IDs from the transactions.txt file, retrives the status of each transaction, and writes the
-Name, ID, amount, and status to the statuses.csv file. 
+This program reads the transaction types and IDs from the transactions.txt file, retrieves the status of each transaction, and writes the Name, ID, amount, and status to the statuses.csv file. This format makes it easy for the user read and check the status of each test case. 
 Format: Name,ID,Amount,Status
