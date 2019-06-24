@@ -25,7 +25,7 @@ transactions.append(json.dumps(bct13))
 and vice versa. If you remove any transactions, remove any references to it elsewhere.
 
 ## pythonreader.py
-* This program has 2 file paths to be specified, just as before: `transactions_json_path` and `transactions_text_path`. `transactions_json_path` should point to where the writer program stored the test transactions as JSON data and `transactions_text_path` should point to where you want the program to where you want it to store the file to which it will write transaction IDs.     
+* This program has 2 file paths to be specified, just as before: `transactions_json_path` and `transactions_text_path`. `transactions_json_path` should point to where the writer program stored the test transactions as JSON data and `transactions_text_path` should point to where you want the program to store the file to which it will write transaction IDs.     
 E.G.
 ```
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
