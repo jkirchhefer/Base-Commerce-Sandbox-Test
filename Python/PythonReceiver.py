@@ -36,15 +36,17 @@ def main():
     # gets the transaction statuses depending on type and id and stores them in the statuses file
     with open(statuses_file_path, "a") as status_writer:
         for transaction_info in transactions:
-            if transaction_info[0] == "BCT":
-                transaction = client.get_bank_card_transaction(transaction_info[1])
+            transaction_id = transaction_info[1]
+            transaction_type = transaction_info[0]
+            if transaction_type == "BCT":
+                transaction = client.get_bank_card_transaction(transaction_id)
                 name = transaction.name
-            elif transaction_info[0] == "BAT":
-                transaction = client.get_bank_account_transaction(transaction_info[1])
+            elif transaction_type == "BAT":
+                transaction = client.get_bank_account_transaction(transaction_id)
                 name = transaction.account_name
             amount = transaction.amount
             status = transaction.status
-            status_writer.write(name + "," + str(transaction_info[1]) + "," + str(amount) + "," + status + "\n")
+            status_writer.write(name + "," + str(transaction_id) + "," + str(amount) + "," + status + "\n")
 
     # prints session ID for later reference
     print("Session ID: " + client.session_id)
