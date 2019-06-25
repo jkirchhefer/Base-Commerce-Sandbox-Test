@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class JavaReceiver {
     public static void main(String[] args) throws Exception{
-        //creates file object for reading transaction types and IDs
+        //creates file object for reading transaction form and IDs
         //path must be a String
         File transactions_file = new File($path_to_transactions.txt);
         Scanner transactions_file_scanner = new Scanner(transactions_file);
