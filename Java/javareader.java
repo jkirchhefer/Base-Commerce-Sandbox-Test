@@ -16,13 +16,13 @@ public class javareader {
         File transactions_json = new File($path_to_transactions.json);
         Scanner transactions_json_scanner = new Scanner(transactions_json);
         
-        //creates file object for the file that will store the transaction types and IDs
+        //creates file object for the file that will store the transaction forms and IDs
         File transactions_text = new File($path_to_transactions.txt);
          
-        //creates/initializes file for storing transaction type and IDs, if DNE
+        //creates/initializes file for storing transaction forms and IDs, if DNE
         if (transactions_text.createNewFile()) { 
             FileWriter transactions_text_writer = new FileWriter(transactions_text);
-            transactions_text_writer.write("Format: Type,TransactionID\n");
+            transactions_text_writer.write("Format: Form,TransactionID\n");
             transactions_text_writer.close();
         }
         
@@ -31,12 +31,12 @@ public class javareader {
         BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
         client.setSandbox(true);
         
-        //creates a file writer for storing transaction types and IDs
+        //creates a file writer for storing transaction forms and IDs
         FileWriter transactions_text_writer = new FileWriter(transactions_text, true);
         
         //iterates through each line of the JSON file
         //processes each transaction
-        //stores the transaction type and ID to the new file
+        //stores the transaction form and ID to the new file
         while (transactions_json_scanner.hasNextLine()) {
             String transaction_json = transactions_json_scanner.nextLine();
             JSONObject transaction_object = new JSONObject(transaction_json);
