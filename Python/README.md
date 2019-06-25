@@ -1,6 +1,6 @@
 # Getting Started
 ## pythonwriter.py
-* The only thing necessary for you to run this program is that you define `transactions_json_path` by replacing `$path_to_transactions.json` with the path to where you'd like the program to write these files. The file path variables must be defined as String.   
+* The only thing necessary for you to run this program is that you define `transactions_json_path` by replacing `$path_to_transactions.json` with the path to where you'd like the program to store the file where it will write these transactions. The file path variables must be defined as String.   
 E.G.
 ```
 transactions_json_path = "/home/user/sandbox-test/transactions.json"
