@@ -28,9 +28,9 @@ These programs help you design the specific test cases you would like to process
 Format: JSON
 
 #### Reader Programs
-These programs read transactions from the transactions.json file, process them, and writ each transaction type and ID to the transactions.txt file. The receiver programs will later use this information to retrieve each transaction's status.     
-Format: Type,ID
+These programs read transactions from the transactions.json file, process them, and writ each transaction form and ID to the transactions.txt file. The receiver programs will later use this information to retrieve each transaction's status.     
+Format: Form,ID
 
 #### Receiver Programs
-These programs read the transaction types and IDs from the transactions.txt file, retrieve the status of each transaction, and write the Name, ID, amount, and status to the statuses.csv file. This format makes it easy for the user read and check the status of each test case.     
+These programs read the transaction forms and IDs from the transactions.txt file, retrieve the status of each transaction, and write the Name, ID, amount, and status to the statuses.csv file. This format makes it easy for the user read and check the status of each test case.     
 Format: Name,ID,Amount,Status
