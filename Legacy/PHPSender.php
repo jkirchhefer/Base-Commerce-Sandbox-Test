@@ -5,13 +5,13 @@ include "BaseCommerceClient/basecommercephpsdk/index.php";
 
 //path to transactions file
 //path should be String
-$path = $path_to_transactions.txt;
+$transactions_path = $path_to_transactions.txt;
 
 //creates/initializes transactions file if DNE
-if (! file_exists($path)) {
-    $file = fopen($path, "w");
-    fwrite($file, "Transaction ID\n");
-    fclose($file);
+if (! file_exists($transactions_path)) {
+    $transactions_file = fopen($transactions_path, "w");
+    fwrite($transactions_file, "Transaction ID\n");
+    fclose($transactions_file);
 }
 
 //creates/initializes transation
@@ -126,22 +126,22 @@ $transaction12->setAmount(4.89);
 
 //authenticates client
 //credentials should be String
-$o_bcpc = new BaseCommerceClient($username, $key, $password);
-$o_bcpc->setSandbox( true );
+$client = new BaseCommerceClient($username, $key, $password);
+$client->setSandbox(true);
 
 //processes transaction
-$transaction1 = $o_bcpc->processBankCardTransaction( $transaction1 );
-$transaction2 = $o_bcpc->processBankCardTransaction( $transaction2 );
-$transaction3 = $o_bcpc->processBankCardTransaction( $transaction3 );
-$transaction4 = $o_bcpc->processBankCardTransaction( $transaction4 );
-$transaction5 = $o_bcpc->processBankCardTransaction( $transaction5 );
-$transaction6 = $o_bcpc->processBankCardTransaction( $transaction6 );
-$transaction7 = $o_bcpc->processBankCardTransaction( $transaction7 );
-$transaction8 = $o_bcpc->processBankCardTransaction( $transaction8 );
-$transaction9 = $o_bcpc->processBankCardTransaction( $transaction9 );
-$transaction10 = $o_bcpc->processBankCardTransaction( $transaction10 );
-$transaction11 = $o_bcpc->processBankCardTransaction( $transaction11 );
-$transaction12 = $o_bcpc->processBankCardTransaction( $transaction12 );
+$transaction1 = $client->processBankCardTransaction($transaction1);
+$transaction2 = $client->processBankCardTransaction($transaction2);
+$transaction3 = $client->processBankCardTransaction($transaction3);
+$transaction4 = $client->processBankCardTransaction($transaction4);
+$transaction5 = $client->processBankCardTransaction($transaction5);
+$transaction6 = $client->processBankCardTransaction($transaction6);
+$transaction7 = $client->processBankCardTransaction($transaction7);
+$transaction8 = $client->processBankCardTransaction($transaction8);
+$transaction9 = $client->processBankCardTransaction($transaction9);
+$transaction10 = $client->processBankCardTransaction($transaction10);
+$transaction11 = $client->processBankCardTransaction($transaction11);
+$transaction12 = $client->processBankCardTransaction($transaction12);
 
 
 //creates array of transaction IDs
@@ -158,19 +158,18 @@ array_push($transactions, $transaction9->getTransactionID());
 array_push($transactions, $transaction10->getTransactionID());
 array_push($transactions, $transaction11->getTransactionID());
 array_push($transactions, $transaction12->getTransactionID());
-$lentransactions = count($transactions);
 
 //opens file for writing transaction IDs
-$file = fopen($path, "a");
+$transactions_file = fopen($transactions_path, "a");
 
 //writes transaction IDs
-for($i=0; $i<$lentransactions; $i++) {
-    fwrite($file, $transactions[$i]);
-    fwrite($file, "\n");
+foreach ($transactions as $transaction) {
+    fwrite($transactions_file, "$transactions\n");
 }
 
 //closes file stream
-fclose($file);
+fclose($transactions_file);
 
 //echos session ID for later reference
-echo "Session ID: " + $o_bcpc->getLastSessionId();
+$sessionID = $client->getLastSessionId();
+echo "Session ID: $sessionID";
