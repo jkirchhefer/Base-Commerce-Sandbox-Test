@@ -5,10 +5,10 @@ import os
 def main():
     # creates/initializes the transactions file
     # path should be String
-    file = $path_to_transactions.txt
-    if not os.path.isfile(file):
-        with open(file, "a+") as f:
-            f.write("Format: Type,TransactionID \n")
+    transactions_file = $path_to_transactions.txt
+    if not os.path.isfile(transactions_file):
+        with open(transactions_file, "a") as transactions_file_writer:
+            transactions_file_writer.write("TransactionID \n")
 
     # creates/initializes the transaction
     # should pass
@@ -21,6 +21,7 @@ def main():
     transaction1.amount = 5.25
 
     # ACH transaction
+    # should pass
     ACH1 = BankAccountTransaction()
     ACH1.type = BankAccountTransaction.XS_BAT_TYPE_DEBIT
     ACH1.method = BankAccountTransaction.XS_BAT_METHOD_CCD
@@ -130,12 +131,8 @@ def main():
     transaction12.expiration_year = "2037"
     transaction12.amount = 4.85
 
-    # authenticates the client
-    # credentials should be String
-    o_client = BaseCommerceClient($username, $password,
-                                  $key, True)
-    
-    # processes transactions
+    # authenticates the client and processes transactions
+    o_client = BaseCommerceClient($username, $password, $key, True)
     transaction1 = o_client.process_bank_card_transaction(transaction1)
     transaction2 = o_client.process_bank_card_transaction(transaction2)
     transaction3 = o_client.process_bank_card_transaction(transaction3)
@@ -148,8 +145,6 @@ def main():
     transaction10 = o_client.process_bank_card_transaction(transaction10)
     transaction11 = o_client.process_bank_card_transaction(transaction11)
     transaction12 = o_client.process_bank_card_transaction(transaction12)
-
-    # process ACH transaction
     ACH1 = o_client.process_bank_account_transaction(ACH1)
 
     # creates/initializes list of transactions
@@ -166,22 +161,20 @@ def main():
     transactions.append(transaction10)
     transactions.append(transaction11)
     transactions.append(transaction12)
-
-    # appends ACH transaction
     transactions.append(ACH1)
 
     # writes the transaction IDs to the transactions file
     # make it process the transaction in the loop
-    with open(file, "a+") as f:
+    with open(transactions_file, "a+") as transactions_file_writer:
         for transaction in transactions:
             if str(type(transaction)) == "<class 'basecommerce.bank_card_transaction.BankCardTransaction'>":
-                f.write("BCT," + str(transaction.id) + "\n")
+                transactions_file_writer.write("BCT," + str(transaction.id) + "\n")
             elif str(type(transaction)) == "<class 'basecommerce.bank_account_transaction.BankAccountTransaction'>":
-                f.write("BAT," + str(transaction.id) + "\n")
-                
+                transactions_file_writer.write("BAT," + str(transaction.id) + "\n")
+
     # prints session ID for later reference
     print("Session ID: " + o_client.session_id)
-
+                
 
 if __name__ == "__main__":
     main()
