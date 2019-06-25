@@ -1,7 +1,7 @@
 # Base Commerce Sandbox Test
 This suite of programs is for testing integration with the Base Commerce Sandbox.
 ## Updates
-#### 6/24/19
+#### 6/25/19
 Documentation has been added for the entire suite of programs. These instructions should make getting started even easier. 
 
 #### 6/21/19
