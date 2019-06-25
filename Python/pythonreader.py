@@ -26,13 +26,13 @@ def main():
     # creates/initializes file for storing transaction IDs
     if not os.path.isfile(transactions_text_path):
         with open(transactions_text_path, "a+") as transactions_writer:
-            transactions_writer.write("Format: Type,TransactionID\n")
+            transactions_writer.write("Format: Form,TransactionID\n")
 
     # authenticates client
     # credentials should be String
     client = BaseCommerceClient($username, $password, $key, True)
 
-    # iterates through transactions, processing them and storing transaction types and IDs
+    # iterates through transactions, processing them and storing transaction forms and IDs
     with open(transactions_text_path, "a") as transactions_writer:
         for transaction in transactions:
             if transaction["form"] == "BCT":
