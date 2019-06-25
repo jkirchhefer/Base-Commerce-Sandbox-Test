@@ -3,7 +3,7 @@
 * The only thing necessary for you to run this program is that you define `transactions_json_path` by replacing `$path_to_transactions.json` with the path to where you'd like the program to store the file where it will write the transactions. The file path variables must be defined as String.   
 E.G.
 ```
-transactions_json_path = "/home/user/sandbox-test/transactions.json"
+$transactions_json_path = "/home/user/sandbox-test/transactions.json"
 ```
 * From there, you can design the transactions to your desire. Just be sure to modify `transactions[]` accordingly, if you add or remove any transactions.   
 E.G. if you add bct13,
@@ -41,8 +41,8 @@ $client = new BaseCommerceClient("your username here", "your password here", "yo
 * This last program requires that you specify 2 file paths, `transactions_path` and `statuses_path`. These should point to the file from which it will read transaction IDs and where the program will store the file to which it will write transaction statuses, respectively.  
 E.G.
 ```
-transactions_path = "/home/user/sandbox-test/transactions.txt"
-statuses_path = "/home/user/sandbox-test/statuses.csv"
+$transactions_path = "/home/user/sandbox-test/transactions.txt"
+$statuses_path = "/home/user/sandbox-test/statuses.csv"
 ```
 * Second, you must provide your credentials to initialize the Base Commerce client. This is the same as before. Replace `$username`, `$password`, and `$key` with their respective credentials.   
 E.G.
