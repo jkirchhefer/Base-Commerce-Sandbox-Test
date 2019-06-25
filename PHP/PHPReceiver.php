@@ -21,10 +21,10 @@ $statuses = fopen($statuses_path, "a");
 //iteratespast the header information
 fgets($transactions_file);        
 
-//creates array for transaction types and ids
+//creates array for transaction forms and IDs
 $transactions = array();
 
-//populates array of transaction types and ids, filtering empty entries
+//populates array of transaction forms and IDs, filtering empty entries
 while(!feof($transactions_file)) {
     $transaction_info = explode(",", fgets($transactions_file));
     $transaction_info = array_filter($transaction_info);
@@ -42,16 +42,16 @@ $client->setSandbox(true);
 
 //gets transaction statuses and stores it in the statuses file
 foreach ($transactions as $transaction_info) {
-    $type = $transaction_info[0];
+    $form = $transaction_info[0];
     $id = intval($transaction_info[1]);
             
-    if($type === "BCT") {
+    if($form === "BCT") {
         $transaction = $client->getBankCardTransaction($id);
         $name = $transaction->getCardName();
         $amount = $transaction->getAmount();
         $status = $transaction->getStatus();
         fwrite($statuses, "$name,$id,$amount,$status\n");
-    } elseif($type === "BAT") {
+    } elseif($form === "BAT") {
         $transaction = $client->getBankAccountTransaction($id);
         $name = $transaction->getAccountName();
         $amount = $transaction->getAmount();
