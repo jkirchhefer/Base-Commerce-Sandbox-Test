@@ -2,7 +2,7 @@
 This suite of programs is for testing integration with the Base Commerce Sandbox.
 ## Updates
 #### 6/24/19
-Added more documentation for the Python set of programs. This will soon be completed for the entire suite.  
+Documentation has been added for the entire suite of programs. These instructions should make getting started even easier. 
 
 #### 6/21/19
 The entire suite has been refactored. Functionally, everything operates the same as before. However, all the code has been commented and rewritten to be more extensible, usable, and understandable.
