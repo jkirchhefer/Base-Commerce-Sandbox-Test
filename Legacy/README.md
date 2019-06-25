@@ -6,8 +6,6 @@ PythonSender.py is able to work with ACH but it has not been fully implemented. 
 
 ## Getting Started
 #### JavaSender.java
-# Getting Started
-## javawriter.java
 * The first thing that is required for you to run this program is that you define `f` by replacing `$path_to_transactions.txt` with the path to where you'd like the program to store the file where it will write transaction IDs. The file path variables must be defined as String.   
 E.G.
 ```
