@@ -9,7 +9,7 @@ $transactions_json_path = $path_to_transactions.json;
 //checks if transactions file exists, creates if DNE
 if (! file_exists($transactions_text_path)) {
     $transactions_text = fopen($transactions_text_path, "w");
-    fwrite($transactions_text, "Format: Type,TransactionID\n");
+    fwrite($transactions_text, "Format: Form,TransactionID\n");
     fclose($transactions_text);
 }
 
@@ -36,7 +36,7 @@ $transactions_text = fopen($transactions_text_path, "a");
 $client = new BaseCommerceClient($username, $password, $key);
 $client->setSandbox(true);
 
-//processes transactions and stores its type and ID
+//processes transactions and stores its form and ID
 foreach ($transactions as $transaction) {
     if($transaction->form === "BCT") {
         $bct = new BankCardTransaction();
