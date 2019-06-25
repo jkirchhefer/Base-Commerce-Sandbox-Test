@@ -164,7 +164,7 @@ $transactions_file = fopen($transactions_path, "a");
 
 //writes transaction IDs
 foreach ($transactions as $transaction) {
-    fwrite($transactions_file, "$transactions\n");
+    fwrite($transactions_file, "$transaction\n");
 }
 
 //closes file stream
