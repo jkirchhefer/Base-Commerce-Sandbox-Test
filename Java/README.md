@@ -1,7 +1,7 @@
 # Getting Started
 ## javawriter.java
 * The first thing you must do is make sure you have the [org.json package](https://github.com/stleary/JSON-java) in your source folder.
-* All that is left for you to run this program is that you define `transactions_file` by replacing `$path_to_transactions.json` with the path to where you'd like the program to store the file where it will write these transactions. The file path variables must be defined as String.   
+* All that is left for you to run this program is that you define `transactions_file` by replacing `$path_to_transactions.json` with the path to where you'd like the program to store the file where it will write the transactions. The file path variables must be defined as String.   
 E.G.
 ```
 File transactions_file = new File("/home/user/sandbox-test/transactions.json");
