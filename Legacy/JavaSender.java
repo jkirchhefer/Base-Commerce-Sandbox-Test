@@ -9,13 +9,13 @@ public class JavaSender {
     public static void main(String[] args) throws Exception {
         //creates file object for storing transaction IDs
         //paths should be String
-        File f = new File($path_to_transactions.txt);
+        File transactions_file = new File($path_to_transactions.txt);
         
         //tests existence of transactions file, creates/initializes file if DNE
-        if (f.createNewFile()) { 
-            FileWriter fWriter = new FileWriter(f);
-            fWriter.write("TransactionID\n");
-            fWriter.close();
+        if (transactions_file.createNewFile()) { 
+            FileWriter transactions_file_writer = new FileWriter(transactions_file);
+            transactions_file_writer.write("TransactionID\n");
+            transactions_file_writer.close();
         }
         
         //creates/initializes transactions
@@ -146,15 +146,19 @@ public class JavaSender {
         //credentials should be String
         BaseCommerceClient client = new BaseCommerceClient($username, $password, $key);
         client.setSandbox(true);
+        
+        //opens transactions file stream
+        FileWriter transactions_file_writer = new FileWriter(transactions_file, true);
 
         //processes transaction and records ID
         for(BankCardTransaction transaction: transactions) {
             transaction = client.processBankCardTransaction(transaction);
-            FileWriter fWriter = new FileWriter(f, true);
-            fWriter.write(transaction.getTransactionId() + "\n");
-            fWriter.close();
+            transactions_file_writer.write(transaction.getTransactionId() + "\n");
         }
+        //closes transactions file stream
+        transactions_file_writer.close();
+        
         //prints session ID for later reference
-        System.out.println("Session ID: " + o_client.getLastSessionID());
+        System.out.println("Session ID: " + client.getLastSessionID());
     }
 }
