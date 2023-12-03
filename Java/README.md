@@ -25,7 +25,7 @@ transactions.add(bct13);
 and vice versa. If you remove any transactions, remove any references to it elsewhere.
 
 ## javareader.java
-* The [org.json package](https://github.com/stleary/JSON-java) should be added to the source folder for this program if it is not in the same location as the writer program. 
+* The [org.json package](https://github.com/stleary/JSON-java) should be added to the source folder for this program, if it is not in the same location as the writer program. 
 * This program has 2 file paths to be specified, just as before: `transactions_json` and `transactions_text`. `transactions_json` should point to where the writer program stored the JSON file with the test transactions, and `transactions_text` should point to where you want the reader program to store the file to which it will write transaction IDs.     
 E.G.
 ```
