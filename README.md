@@ -28,7 +28,7 @@ These programs help you design the specific test cases you would like to process
 Format: JSON
 
 #### Reader Programs
-These programs read transactions from the transactions.json file, process them, and writ each transaction form and ID to the transactions.txt file. The receiver programs will later use this information to retrieve each transaction's status.     
+These programs read transactions from the transactions.json file, process them, and write each transaction form and ID to the transactions.txt file. The receiver programs will later use this information to retrieve each transaction's status.     
 Format: Form,ID
 
 #### Receiver Programs
